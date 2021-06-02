@@ -4,16 +4,16 @@ const path = require("path");
 const config = {
   entry: {
     app: ["./public/assets/js/index.js","./public/assets/js/db.js"]
-    // database:
   },
   output: {
-    path: __dirname + "/public/dist",
+    path: path.resolve(__dirname + "/public/dist"),
     filename: "[name].bundle.js"
   },
   mode: "development",
   // add configuration to use babel-loader here
   plugins: [
     new WebpackPwaManifest({
+      publicPath: "./",
       filename: "manifest.webmanifest",
       fingerprints: false,
       inject: false,
@@ -25,6 +25,11 @@ const config = {
       "theme-color": "#ffffff",
       start_url: "/",
       display: "standalone",
+      icons: [{
+        src: path.resolve("public/assets/images/icons/icon-512x512.png"),
+        sizes: [96, 128, 192, 256, 384, 512],
+        destination: path.join("assets", "icons")
+      }]
     }),
   ],
   module: {
