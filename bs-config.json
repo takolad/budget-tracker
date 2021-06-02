@@ -1,0 +1,6 @@
+{
+    "server": {
+        "baseDir": "./public"
+    },
+    "browser": "google chrome"
+}

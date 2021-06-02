@@ -1,7 +1,7 @@
 let db;
 let budgetVersion;
 
-const request = indexedDB.open("budgetDB", 1);
+const request = indexedDB.open('BudgetDB', budgetVersion || 21);
 
 request.onsuccess = event => {
   console.log(request.result.name);
@@ -80,7 +80,7 @@ request.onsuccess = function (e) {
   }
 };
 
-const saveRecord = (record) => {
+export const saveRecord = (record) => {
   console.log('Save record invoked');
   // Create a transaction on the Budget db with readwrite access
   const transaction = db.transaction(['Budget'], 'readwrite');
