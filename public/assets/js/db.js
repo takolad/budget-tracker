@@ -1,7 +1,7 @@
 let db;
-let budgetVersion;
+let budgetVersion = 1;
 
-const request = indexedDB.open('BudgetDB', budgetVersion || 21);
+const request = indexedDB.open('BudgetDB', budgetVersion);
 
 request.onsuccess = event => {
   console.log(request.result.name);
@@ -9,7 +9,6 @@ request.onsuccess = event => {
 
 request.onupgradeneeded = function (e) {
   console.log('Upgrade needed in IndexDB');
-
   const { oldVersion } = e;
   const newVersion = e.newVersion || db.version;
 
@@ -80,7 +79,7 @@ request.onsuccess = function (e) {
   }
 };
 
-export const saveRecord = (record) => {
+const saveRecord = (record) => {
   console.log('Save record invoked');
   // Create a transaction on the Budget db with readwrite access
   const transaction = db.transaction(['Budget'], 'readwrite');
@@ -94,3 +93,5 @@ export const saveRecord = (record) => {
 
 // Listen for app coming back online
 window.addEventListener('online', checkDatabase);
+
+module.exports = saveRecord;
