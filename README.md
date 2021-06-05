@@ -14,7 +14,7 @@
 
 ## Links
 
-[Deployed Site](https://budget-citadel-90310.herokuapp.com/)
+[Deployed Site](https://budget-citadel-90310.herokuapp.com/)  
 [Repo](https://github.com/takolad/budget-tracker)
 
 ## License
